@@ -1,0 +1,68 @@
+ERROR:
+ ../meson.build:1:0: ERROR: Unknown compiler(s): [['cc'], ['gcc'], ['clang'], ['nvc'], ['pgcc'], ['icc'], ['icx']]
+27.54       The following exception(s) were encountered:
+27.54       Running `cc --version` gave "[Errno 2] No such file or directory: 'cc'"
+27.54       Running `gcc --version` gave "[Errno 2] No such file or directory: 'gcc'"
+27.54       Running `clang --version` gave "[Errno 2] No such file or directory: 'clang'"     
+27.54       Running `nvc --version` gave "[Errno 2] No such file or directory: 'nvc'"
+27.54       Running `pgcc --version` gave "[Errno 2] No such file or directory: 'pgcc'"       
+27.54       Running `icc --version` gave "[Errno 2] No such file or directory: 'icc'"
+27.54       Running `icx --version` gave "[Errno 2] No such file or directory: 'icx'"
+27.54
+27.54       A full log can be found at /tmp/pip-install-1cnm61q3/scikit-learn_5a31ad4ea262452fbdb38e5da4366fe5/.mesonpy-y3xhj2n5/meson-logs/meson-log.txt
+27.54       [end of output]
+27.54
+27.54   note: This error originates from a subprocess, and is likely not a problem with pip.  
+27.54
+27.54 × Encountered error while generating package metadata.
+27.54 ╰─> See above for output.
+27.54
+27.54 note: This is an issue with the package mentioned above, not pip.
+27.54 hint: See above for details.
+27.55
+27.55 [notice] A new release of pip is available: 23.0.1 -> 24.1.1
+27.55 [notice] To update, run: pip install --upgrade pip
+
+SOLUTION:
+
+# Install system dependencies
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    build-essential \
+    gcc \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+
+ERROR
+=> ERROR [enronML 2/5] RUN apt-get update &&     apt-get install -y --no-install-recommends     build-essential     gcc     &  2.1s 
+------
+ > [enronML 2/5] RUN apt-get update &&     apt-get install -y --no-install-recommends     build-essential     gcc     && apt-get clean     && rm -rf /var/lib/apt/lists/*:
+2.039 /bin/sh: apt-get: not found
+------
+failed to solve: process "/bin/sh -c apt-get update &&     apt-get install -y --no-install-recommends     build-essential     gcc     && apt-get clean     && rm -rf /var/lib/apt/lists/*" did not complete successfully: exit code: 127
+
+SOLUTION:
+use Debain based Image: such as python:3.9-slim
+
+
+
+###################### DOCKER CMD ##############################
+
+# build a docker image defined by docker-compose.yml file
+docker compose up --build
+
+
+
+store the image in the dockerhub: This command pushes the Docker images 
+associated with your Docker Compose services to a container 
+registry (like Docker Hub or another private registry) if you've tagged
+ them appropriately with the registry URL and repository name.
+
+docker compose push
+
+
+## now download the image in the local docker from dockerhub
+docker login
+
+docker run -p5000:5000 chandanmonotosh554/enron-img

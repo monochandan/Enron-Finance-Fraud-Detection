@@ -1,0 +1,262 @@
+conda create --name nlp-tweet python=3.9
+conda activate nlp-tweet
+conda install jupyter ipykernel
+
+## create kernel from the environment
+ipython kernel install --user --name=nlp
+conda install scikit-learn
+
+conda install nltk
+conda install pandas
+
+## pipe-line setup 
+
+curl -X POST -H "Content-Type: application/json" -d '{"text": "May the force be with you."}' 0.0.0.0:5000/predict
+
+correct:
+curl -X POST -H "Content-Type: application/json" -d "{\"text\": \"May the force be with you.\"}" http://localhost:5000/predict
+
+
+conda list
+
+
+
+
+cd api
+
+# build a docker image defined by docker-compose.yml file
+docker compose up --build
+
+
+fro running and checking the postman:
+run the flask app by 
+
+-- python app.py
+
+in postman:
+Headers -> content-Type application/json
+
+in body:
+{
+    "text": "May the force be with you"
+}
+
+store the image in the dockerhub: This command pushes the Docker images 
+associated with your Docker Compose services to a container 
+registry (like Docker Hub or another private registry) if you've tagged
+ them appropriately with the registry URL and repository name.
+
+docker compose push
+
+ERROR:
+
+for this version of -- scikit-learn==1.5.0 in requirements.txt, we need  -- FROM python:3.10-alpine or greater version in Dockerfile
+
+# Install necessary build tools and libraries
+RUN apk add --no-cache build-base gcc gfortran musl-dev linux-headers libgfortran lapack-dev freetype-dev libpng-dev openblas-dev
+
+#remove image
+docker rmi -f 85
+
+## seeing the containers 
+docker ps -a 
+
+## remove the container
+docker rm -f 5
+
+## RUN DOCKER:
+docker run -p5000:5000 chandanmonotosh554/mlapp
+
+
+############################ from other git file ##########################################
+python -m venv enron_env
+enron_env\Scripts\activate
+
+pip 24.1
+
+pip install scikit-learn
+
+folders:
+
+template (folder)-> HTML front_end
+static (folder) -> CSS, media, image, vide, icon
+main.py (file) -> flask code
+model.pickle
+dataset.csv
+
+create .py file
+New-Item -ItemType File -Name "main.py"
+
+mkdir templates
+mkdir static
+
+######################################################################
+['poi',
+ 'exercised_stock_options', -o
+ 'total_stock_value', -o
+ 'bonus', -o
+ 'salary',-o
+ 'fraction_to_poi', -o
+
+ # fraction of email sent to POI
+    df_enron["to_poi_ratio"] = df_enron["from_this_person_to_poi"] / df_enron["from_messages"]
+    'to_poi_ratio', -df_enron["to_poi_ratio"] = df_enron["from_this_person_to_poi"] / df_enron["from_messages"]
+
+ # ratio of Long-term incentives awarded to the individual to total payment received by teh individuals
+    df_enron["long_term_incentive_ratio"] = df_enron["long_term_incentive"] / df_enron["total_payments"]   
+    'long_term_incentive_ratio', -df_enron["long_term_incentive_ratio"] = df_enron["long_term_incentive"] / df_enron["total_payments"]
+ 
+ 'deferred_income', -o
+
+ # ratio of bonous to salary for each individual or POI
+    df_enron["bonus_to_salary_ratio"] = df_enron["bonus"] / df_enron["salary"]
+    'bonus_to_salary_ratio',
+
+ 'long_term_incentive', -o
+ 'restricted_stock', -o
+
+ # ratio of shared receipt with poi to the number of emails received by the poi
+    df_enron["shared_receipt_with_poi_ratio"] = df_enron["shared_receipt_with_poi"] / df_enron["to_messages"]
+    'shared_receipt_with_poi_ratio',
+
+ 'total_payments', -o
+ 'shared_receipt_with_poi', -o
+ 'loan_advances', -o
+ 'expenses', -o
+ 'from_poi_to_this_person'] -o
+
+
+
+
+
+conda create --name nlp-tweet python=3.9
+conda activate nlp-tweet
+conda install jupyter ipykernel
+
+## create kernel from the environment
+ipython kernel install --user --name=nlp
+conda install scikit-learn
+
+conda install nltk
+conda install pandas
+
+## pipe-line setup 
+
+curl -X POST -H "Content-Type: application/json" -d '{"text": "May the force be with you."}' 0.0.0.0:5000/predict
+
+correct:
+curl -X POST -H "Content-Type: application/json" -d "{\"text\": \"May the force be with you.\"}" http://localhost:5000/predict
+
+
+
+curl -X POST -H "Content-Type: application/json" -d "{\"sample_input\": [1000, 500000, 1000, 2000, 10000, 300, 10000, 400, 3000, 100, 100, 100, 100000, 100, 100, 100000, 100]}" http://127.0.0.1:5000/predict
+
+
+
+
+conda list
+
+
+
+
+cd api
+
+# build a docker image defined by docker-compose.yml file
+docker compose up --build
+
+
+fro running and checking the postman:
+run the flask app by 
+
+-- python app.py
+
+in postman:
+Headers -> content-Type application/json
+
+in body:
+{
+    "text": "May the force be with you"
+}
+
+store the image in the dockerhub: This command pushes the Docker images 
+associated with your Docker Compose services to a container 
+registry (like Docker Hub or another private registry) if you've tagged
+ them appropriately with the registry URL and repository name.
+
+docker compose push
+
+ERROR:
+
+for this version of -- scikit-learn==1.5.0 in requirements.txt, we need  -- FROM python:3.10-alpine or greater version in Dockerfile
+
+# Install necessary build tools and libraries
+RUN apk add --no-cache build-base gcc gfortran musl-dev linux-headers libgfortran lapack-dev freetype-dev libpng-dev openblas-dev
+
+#remove image
+docker rmi -f 85
+
+## seeing the containers 
+docker ps -a 
+
+## remove the container
+docker rm -f 5
+
+## RUN DOCKER:
+docker run -p5000:5000 chandanmonotosh554/mlapp
+
+
+
+
+['poi',
+ 'exercised_stock_options', -o
+ 'total_stock_value', -o
+ 'bonus', -o
+ 'salary',-o
+ 'fraction_to_poi', -o
+
+ # fraction of email sent to POI
+    df_enron["to_poi_ratio"] = df_enron["from_this_person_to_poi"] / df_enron["from_messages"]
+    'to_poi_ratio', -df_enron["to_poi_ratio"] = df_enron["from_this_person_to_poi"] / df_enron["from_messages"]
+
+ # ratio of Long-term incentives awarded to the individual to total payment received by teh individuals
+    df_enron["long_term_incentive_ratio"] = df_enron["long_term_incentive"] / df_enron["total_payments"]   
+    'long_term_incentive_ratio', -df_enron["long_term_incentive_ratio"] = df_enron["long_term_incentive"] / df_enron["total_payments"]
+ 
+ 'deferred_income', -o
+
+ # ratio of bonous to salary for each individual or POI
+    df_enron["bonus_to_salary_ratio"] = df_enron["bonus"] / df_enron["salary"]
+    'bonus_to_salary_ratio',
+
+ 'long_term_incentive', -o
+ 'restricted_stock', -o
+
+ # ratio of shared receipt with poi to the number of emails received by the poi
+    df_enron["shared_receipt_with_poi_ratio"] = df_enron["shared_receipt_with_poi"] / df_enron["to_messages"]
+    'shared_receipt_with_poi_ratio',
+
+ 'total_payments', -o
+ 'shared_receipt_with_poi', -o
+ 'loan_advances', -o
+ 'expenses', -o
+ 'from_poi_to_this_person'] -o
+
+
+ ######################## test with 3 input ######################################
+ [{'input': [100000, 50000, 1000, 2000, 10000, 300, 10000, 400, 300, 100, 100,
+  100, 100, 100, 100, 100, 100], 'pred': 0, 
+  'label': 'Not a Preson Of Interest'}, 
+ 
+ {'input': [1000, 500000, 1000, 2000, 10000, 300, 10000, 400, 3000,
+  100, 100, 100, 100000, 100, 100, 100000, 100], 
+  'pred': 1, 'label': 'Parson Of Interest'}, 
+ 
+ 
+ 
+ {'input': [100000, 50000, 1000, 2000, 10000,
+  300, 10000, 400, 300, 100, 100, 100, 100, 100, 100, 100, 100], 
+  'pred': 0, 'label': 'Not a Preson Of Interest'}]
+
+
+
+  ################

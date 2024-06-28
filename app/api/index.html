@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Machine Learning Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .input-group {
+            margin-bottom: 10px;
+        }
+        label {
+            display: inline-block;
+            width: 150px;
+        }
+        input[type="text"] {
+            width: 200px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h2>Machine Learning Prediction</h2>
+    
+    <div class="input-group">
+        <label for="input1">Input 1:</label>
+        <input type="text" id="input1" name="input1">
+    </div>
+    
+    <div class="input-group">
+        <label for="input2">Input 2:</label>
+        <input type="text" id="input2" name="input2">
+    </div>
+
+    <div class="input-group">
+        <label for="input3">Input 1:</label>
+        <input type="text" id="input3" name="input3">
+    </div>
+   
+    <div class="input-group">
+        <label for="input4">Input 2:</label>
+        <input type="text" id="input4" name="input4">
+    </div>
+
+    <div class="input-group">
+        <label for="input5">Input 1:</label>
+        <input type="text" id="input5" name="input5">
+    </div>
+    
+    <div class="input-group">
+        <label for="input6">Input 2:</label>
+        <input type="text" id="input6" name="input6">
+    </div>
+
+    <div class="input-group">
+        <label for="input7">Input 1:</label>
+        <input type="text" id="input7" name="input7">
+    </div>
+    
+    <div class="input-group">
+        <label for="input8">Input 2:</label>
+        <input type="text" id="input8" name="input8">
+    </div>
+
+    <div class="input-group">
+        <label for="input9">Input 1:</label>
+        <input type="text" id="input9" name="input9">
+    </div>
+    
+    <div class="input-group">
+        <label for="input10">Input 2:</label>
+        <input type="text" id="input10" name="input10">
+    </div>
+
+    <div class="input-group">
+        <label for="input11">Input 1:</label>
+        <input type="text" id="input11" name="input11">
+    </div>
+    
+    <div class="input-group">
+        <label for="input12">Input 2:</label>
+        <input type="text" id="input12" name="input12">
+    </div>
+
+    <div class="input-group">
+        <label for="input13">Input 1:</label>
+        <input type="text" id="input13" name="input13">
+    </div>
+    
+    <div class="input-group">
+        <label for="input14">Input 2:</label>
+        <input type="text" id="input14" name="input14">
+    </div>
+    <div class="input-group">
+        <label for="input15">Input 1:</label>
+        <input type="text" id="input15" name="input15">
+    </div>
+    
+    <div class="input-group">
+        <label for="input16">Input 2:</label>
+        <input type="text" id="input16" name="input16">
+
+    </div> <div class="input-group">
+        <label for="input17">Input 1:</label>
+        <input type="text" id="input17" name="input17">
+    </div>
+    
+
+    <button id="predictButton">Predict</button>
+
+    <div id="predictionResult"></div>
+
+    <script>
+        document.getElementById('predictButton').addEventListener('click', function() {
+            // Collect input values from all input boxes
+            var inputs = [];
+            for (var i = 1; i <= 17; i++) {
+                var inputId = 'input' + i;
+                var value = document.getElementById(inputId).value.trim();
+                console.log(inputId+": " + value);
+                if (value === '') {
+                    alert('Please fill all input boxes.');
+                    return;
+                }
+                inputs.push(parseFloat(value));
+            }
+
+            // Send data to Flask server
+            console.log(inputs)
+            var xhr = new XMLHttpRequest();
+            var url = 'http://127.0.0.1:5000/predict'; // Replace with your Flask server URL
+            var data = JSON.stringify({ 'sample_input': inputs });
+            console.log(data)
+            xhr.open('POST', url, true);
+            xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+            
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    var response = JSON.parse(xhr.responseText);
+                    var prediction = response.predict;
+                    console.log(prediction)
+                    var resultElement = document.getElementById('predictionResult');
+                    resultElement.innerHTML = '<h3>Prediction Result:</h3>';
+                    resultElement.innerHTML += '<p>' + prediction + '</p>';
+                    response.forEach(prediction => {
+                        resultElement.innerHTML += '<p>Input: ${prediction.input}, Prediction: ${prediction.pred}, Label: ${prediction.label}</p>';
+                        
+                    });
+                } else {
+                    alert('Error occurred during prediction. Please try again.');
+                }
+            };
+            
+            xhr.onerror = function() {
+                alert('Error occurred during prediction. Please try again.');
+            };
+
+            xhr.send(data);
+        });
+    </script>
+</body>
+</html>
