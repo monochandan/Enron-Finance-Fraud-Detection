@@ -1,10 +1,9 @@
 # ML model deployment in docker : Financial Fraud Detection
 
 - scikit-learn==1.5.0
-- nltk==3.8.1
-- flask==3.0.3 
-- flask-cors==4.0.1
-- python==3.10
+- Flask==3.0.3
+- Flask-Cors==4.0.1
+- python==3.9
 
 # Build an image (Dockerize) and run on Docker container:
 
@@ -12,7 +11,7 @@
 
 ## Downloade project (git bash):
     
-    git clone https://github.com/monochandan/tweet-sentiment-docker-ML-Model.git // clone the repository in the local computer
+    git clone https://github.com/monochandan/Enron-Finance-Fraud-Detection.git // clone the repository in the local computer
 
 ## Open in VS code
 
@@ -32,7 +31,7 @@
 
 ## Run in command prompt or powershell:
 
-    docker run -p5000:5000 chandanmonotosh554/mlapp
+    docker run -p5000:5000 chandanmonotosh554/enron-img
 
 ## Then in browser:
 
