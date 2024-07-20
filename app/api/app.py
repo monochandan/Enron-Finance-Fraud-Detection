@@ -1,8 +1,10 @@
 from flask import Flask, jsonify, request, send_from_directory
 from utilities import prediction_poi
-#from flask_cors import CORS
+from flask_cors import CORS
 import numpy as np
+
 app = Flask(__name__)
+CORS(app)
 
 @app.route('/')
 def index():
@@ -11,15 +13,16 @@ def index():
 @app.post('/predict')
 def predict():
     data = request.get_json()
+    print("data = request.get_json(): ",data)
     try:
-        sample = data['sample_input'] # jsonfile with key sample_input
+        sample = data['input'] # jsonfile with key sample_input
     except KeyError:
-        return jsonify({'error': 'No sample_input sent'})
+        return jsonify({'error': 'No input sent'})
     
     # sample = [sample]
     ## reshape input array
     sample = np.array(sample).reshape(1, -1)
-    #print(sample)
+    print("app.py, sample:",sample)
     prediction = prediction_poi(sample)
     # convert the prediction to a list to ensure it is a JSON serializable
     for i in prediction:
@@ -42,8 +45,9 @@ def predict():
     #         'label': 'Not a Person Of Interest' if prediction_list[0] == 0 else 'Person Of Interest'
     #     }
     result = jsonify(prediction)
+    print("app.py,result: ",result)
     return result
 
 if __name__ == '__main__':
-    app.run(host = '0.0.0.0', debug = True)
+    app.run(host = '0.0.0.0',port = 5000, debug = True)
 

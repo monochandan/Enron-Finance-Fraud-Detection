@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Machine Learning Prediction</title>
+    <title>Financial Fraud Detection using Enron Dataset</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -22,6 +22,12 @@
             border: 1px solid #ccc;
             border-radius: 4px;
         }
+        .hint {
+            display: block;
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 5px;
+        }
         button {
             padding: 10px 20px;
             background-color: #007bff;
@@ -36,103 +42,130 @@
     </style>
 </head>
 <body>
-    <h2>Machine Learning Prediction</h2>
+    <h2>Financial Fraud Detection using Enron Dataset</h2>
     
     <div class="input-group">
-        <label for="input1">Input 1:</label>
+        <label for="input1">Excersiced Stock Options:</label>
         <input type="text" id="input1" name="input1">
+        <span class="hint">Value (integer/float):Stock options that have been exercised by the person</span>
     </div>
     
     <div class="input-group">
-        <label for="input2">Input 2:</label>
+        <label for="input2">Total stock Value:</label>
         <input type="text" id="input2" name="input2">
+        <span class="hint">Total Value (integer/float):Stock held by the person</span>
     </div>
 
     <div class="input-group">
-        <label for="input3">Input 1:</label>
+        <label for="input3">Bonus:</label>
         <input type="text" id="input3" name="input3">
+        <span class="hint">Value (integer/float):Bonus awerded to that person</span>
     </div>
    
     <div class="input-group">
-        <label for="input4">Input 2:</label>
+        <label for="input4">Salary:</label>
         <input type="text" id="input4" name="input4">
+        <span class="hint">Value (integer/float):Salary of that person</span>
     </div>
 
     <div class="input-group">
-        <label for="input5">Input 1:</label>
+        <label for="input5">Fraction to POI:</label>
         <input type="text" id="input5" name="input5">
+        <span class="hint">Value (integer/float):The fractation of email message sent to POI relatives to all sent message</span>
     </div>
     
     <div class="input-group">
-        <label for="input6">Input 2:</label>
+        <label for="input6">To POI Ratio:</label>
         <input type="text" id="input6" name="input6">
+        <span class="hint">Value(integer/float):Email from the person sent to POI / number of email sent by that person(not POI) </span>
     </div>
 
     <div class="input-group">
-        <label for="input7">Input 1:</label>
+        <label for="input7">Long Term Incentive Ratio:</label>
         <input type="text" id="input7" name="input7">
+        <span class="hint">Value(integer/float):Incentive provided for long term performance</span>
     </div>
     
     <div class="input-group">
-        <label for="input8">Input 2:</label>
+        <label for="input8">Deferred Income:</label>
         <input type="text" id="input8" name="input8">
+        <span class="hint">Value(integer/float):Income that has been deferred tp be received at a later date</span>
     </div>
 
     <div class="input-group">
-        <label for="input9">Input 1:</label>
+        <label for="input9">Bonus To Salary Ratio:</label>
         <input type="text" id="input9" name="input9">
+        <span class="hint">Value(integer/float):Bonous to salary ratio</span>
     </div>
     
-    <div class="input-group">
+    <!-- <div class="input-group">
         <label for="input10">Input 2:</label>
         <input type="text" id="input10" name="input10">
-    </div>
+    </div> -->
 
-    <div class="input-group">
+    <!-- <div class="input-group">
         <label for="input11">Input 1:</label>
         <input type="text" id="input11" name="input11">
-    </div>
+    </div> -->
     
-    <div class="input-group">
+    <!-- <div class="input-group">
         <label for="input12">Input 2:</label>
         <input type="text" id="input12" name="input12">
-    </div>
+    </div> -->
 
-    <div class="input-group">
+    <!-- <div class="input-group">
         <label for="input13">Input 1:</label>
         <input type="text" id="input13" name="input13">
-    </div>
-    
+    </div> -->
+<!--     
     <div class="input-group">
         <label for="input14">Input 2:</label>
         <input type="text" id="input14" name="input14">
-    </div>
-    <div class="input-group">
+    </div> -->
+    <!-- <div class="input-group">
         <label for="input15">Input 1:</label>
         <input type="text" id="input15" name="input15">
-    </div>
-    
+    </div> -->
+<!--     
     <div class="input-group">
         <label for="input16">Input 2:</label>
-        <input type="text" id="input16" name="input16">
+        <input type="text" id="input16" name="input16"> -->
 
-    </div> <div class="input-group">
+    <!-- </div> <div class="input-group">
         <label for="input17">Input 1:</label>
         <input type="text" id="input17" name="input17">
-    </div>
+    </div> -->
     
 
-    <button id="predictButton">Predict</button>
+    <button onclick="makeprediction()">Predict</button>
 
     <div id="predictionResult"></div>
 
-    <script>
+    <!-- <script>
+
+        // const inputFieldsDiv = document.getElementById('input-fields');
+        // const inputCount = 9; // Number of inputs required
+
+        // for (let i = 1; i <= inputCount; i++) {
+        //     const div = document.createElement('div');
+        //     div.classList.add('input-group');
+        //     div.innerHTML = `
+        //         <label for="input${i}">Input ${i}:</label>
+        //         <input type="text" id="input${i}" name="input${i}">
+        //     `;
+        //     inputFieldsDiv.appendChild(div);
+        // }
+
         document.getElementById('predictButton').addEventListener('click', function() {
             // Collect input values from all input boxes
+           // var inputs = [];
             var inputs = [];
-            for (var i = 1; i <= 17; i++) {
-                var inputId = 'input' + i;
+            for (var i = 0; i < 9; i++) {
+
+                var inputId = 'input' + (i+1);
                 var value = document.getElementById(inputId).value.trim();
+                //const inputId = `input${i}`;
+                // const value = document.getElementById(inputId).value.trim();
                 console.log(inputId+": " + value);
                 if (value === '') {
                     alert('Please fill all input boxes.');
@@ -142,24 +175,29 @@
             }
 
             // Send data to Flask server
-            console.log(inputs)
+            console.log("Inputes:",inputs)
             var xhr = new XMLHttpRequest();
             var url = 'http://127.0.0.1:5000/predict'; // Replace with your Flask server URL
-            var data = JSON.stringify({ 'sample_input': inputs });
-            console.log(data)
+            var data = JSON.stringify({ 'input': inputs });
+            // const xhr = new XMLHttpRequest();
+            // const url = '/predict';
+            // const data = JSON.stringify({ 'input': inputs });
+            console.log("Data:",data)
             xhr.open('POST', url, true);
             xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
-            
+            xhr.bod
             xhr.onload = function() {
                 if (xhr.status === 200) {
                     var response = JSON.parse(xhr.responseText);
                     var prediction = response.predict;
-                    console.log(prediction)
-                    var resultElement = document.getElementById('predictionResult');
+                    // const response = JSON.parse(xhr.responseText);
+                    const resultElement = document.getElementById('predictionResult');
+                    console.log("predictioin:",prediction)
+                    //var resultElement = document.getElementById('predictionResult');
                     resultElement.innerHTML = '<h3>Prediction Result:</h3>';
                     resultElement.innerHTML += '<p>' + prediction + '</p>';
                     response.forEach(prediction => {
-                        resultElement.innerHTML += '<p>Input: ${prediction.input}, Prediction: ${prediction.pred}, Label: ${prediction.label}</p>';
+                        resultElement.innerHTML += '<p>Input: ${prediction.input}, Label: ${prediction.label, Prediction: ${prediction.pred}}</p>';
                         
                     });
                 } else {
@@ -173,6 +211,57 @@
 
             xhr.send(data);
         });
-    </script>
+    </script> -->
+
+<script>
+    async function makeprediction(){
+            // taking the inputs from the inout box and put it into the array
+            const inputs = [];
+            for (var i = 0; i < 9; i++) {
+
+                const inputId = 'input' + (i+1);
+                const value = document.getElementById(inputId).value.trim();
+                //const inputId = `input${i}`;
+                // const value = document.getElementById(inputId).value.trim();
+                //console.log(inputId+": " + value);
+                if (value === '') {
+                    alert('Please fill all input boxes.');
+                    return;
+                }
+                inputs.push(parseFloat(value));
+            }
+
+            // Send data to Flask server
+            console.log("Inputs:",inputs)
+            const response = await fetch('http://localhost:5000/predict',{
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ input: inputs })
+            });
+            if (!response.ok){
+                throw new Error('HTTP error! Status: ${response.status}')
+            }
+            const data = await response.json();
+            //console.log(data)
+            const resultElement = document.getElementById('predictionResult')
+            resultElement.textContent = data[0].label;
+            // resultElement.innerHTML = `<h3>Prediction Result:</h3>`;
+            // resultElement.innerHTML += `<p>Label: ${data[0].label}</p>`;
+            if(data[0].label == 'Not a Preson Of Interest')
+            {
+                resultElement.style.color = 'green'
+            }
+            else if(data[0].label == 'Parson Of Interest')
+            {
+                resultElement.style.color = 'Red'
+            }
+            else
+            {
+                resultElement.style.color = 'Blue'
+            }
+    }
+</script>
 </body>
 </html>

@@ -260,3 +260,19 @@ docker run -p5000:5000 chandanmonotosh554/mlapp
 
 
   ################
+
+
+
+new model with 9 features:
+s
+9 inputs -- ouput poi
+['poi',
+ 'exercised_stock_options',
+ 'total_stock_value',
+ 'bonus',
+ 'salary',
+ 'fraction_to_poi',
+ 'to_poi_ratio',
+ 'long_term_incentive_ratio',
+ 'deferred_income',
+ 'bonus_to_salary_ratio']
