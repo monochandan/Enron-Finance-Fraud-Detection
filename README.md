@@ -310,7 +310,7 @@ See the [`LICENSE`](LICENSE) file for details.
 
 ## 👤 Author
 
-**Your Name**
+**monochandan**
 
 GitHub: [@YOUR_USERNAME](https://github.com/YOUR_USERNAME)
 
